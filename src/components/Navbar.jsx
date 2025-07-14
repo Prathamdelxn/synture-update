@@ -1,151 +1,16 @@
-// 'use client'
-// import { useState, useEffect } from 'react'
-
-// export default function Header() {
-//   const [isMenuOpen, setIsMenuOpen] = useState(false)
-//   const [scrolled, setScrolled] = useState(false)
-
-//   useEffect(() => {
-//     const handleScroll = () => {
-//       setScrolled(window.scrollY > 50)
-//     }
-//     window.addEventListener('scroll', handleScroll)
-//     return () => window.removeEventListener('scroll', handleScroll)
-//   }, [])
-
-//   // Smooth scroll function
-//   const scrollToSection = (id) => {
-//     const element = document.getElementById(id)
-//     if (element) {
-//       setIsMenuOpen(false) // Close mobile menu if open
-//       window.scrollTo({
-//         top: element.offsetTop - 80, // Adjust for header height
-//         behavior: 'smooth'
-//       })
-//     }
-//   }
-
-//   return (
-//     <header className={`fixed top-0 w-full z-50 transition-all px-10 duration-300 ${
-//       scrolled 
-//         ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-100' 
-//         : 'bg-white/80 backdrop-blur-md shadow-sm'
-//     }`}>
-//       <div className="container mx-auto px-4 sm:px-6">
-//         <div className="flex items-center justify-between h-20">
-//           {/* Logo with enhanced design */}
-//           <div className="flex items-center group">
-//             <div className="relative">
-//               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
-//               <div className="relative   rounded-lg">
-//                 {/* <span className="text-white font-bold text-lg">S</span> */}
-//                 <img src="/Synture_Without_Tagline.png" alt="" className='h-16 rounded-xl'/>
-//               </div>
-//             </div>
-//             <div className="ml-3">
-//               <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
-//                 Synture
-//               </div>
-//               <div className="text-xs text-gray-500 -mt-1">Digital Excellence</div>
-//             </div>
-//           </div>
-          
-//           {/* Desktop Navigation */}
-//           <nav className="hidden lg:flex items-center space-x-1">
-//             {[
-//               { name: 'Home', id: 'home' },
-//               { name: 'About Us', id: 'services' },
-//               { name: 'Recruitment', id: 'about' },
-//               { name: 'Digital Marketing', id: 'portfolio' },
-//               { name: 'Contact Us', id: 'contact' }
-//             ].map((item) => (
-//               <button
-//                 key={item.id}
-//                 onClick={() => scrollToSection(item.id)}
-//                 className="relative px-4 py-2 text-gray-700 font-medium transition-all duration-300 hover:text-blue-600 group"
-//               >
-//                 {item.name}
-//                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
-//               </button>
-//             ))}
-//           </nav>
-
-//           {/* CTA Button & Mobile Menu */}
-//           <div className="flex items-center space-x-4">
-//             <button 
-//               onClick={() => scrollToSection('contact')}
-//               className="hidden lg:block bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300"
-//             >
-//               Get Started
-//             </button>
-            
-//             {/* Enhanced Mobile Menu Button */}
-//             <button 
-//               className="lg:hidden relative w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white flex items-center justify-center hover:shadow-lg transition-all duration-300"
-//               onClick={() => setIsMenuOpen(!isMenuOpen)}
-//             >
-//               <svg 
-//                 className={`w-5 h-5 transition-transform duration-300 ${isMenuOpen ? 'rotate-90' : ''}`} 
-//                 fill="none" 
-//                 stroke="currentColor" 
-//                 viewBox="0 0 24 24"
-//               >
-//                 {isMenuOpen ? (
-//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-//                 ) : (
-//                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-//                 )}
-//               </svg>
-//             </button>
-//           </div>
-//         </div>
-
-//         {/* Enhanced Mobile Menu */}
-//         <div className={`lg:hidden overflow-hidden transition-all duration-500 ${
-//           isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-//         }`}>
-//           <nav className="py-6 space-y-2">
-//             {[
-//               { name: 'Home', id: 'home', icon: '🏠' },
-//               { name: 'Services', id: 'services', icon: '⚡' },
-//               { name: 'About', id: 'about', icon: '🎯' },
-//               { name: 'Portfolio', id: 'portfolio', icon: '💼' },
-//               { name: 'Contact', id: 'contact', icon: '📞' }
-//             ].map((item) => (
-//               <button
-//                 key={item.id}
-//                 onClick={() => scrollToSection(item.id)}
-//                 className="flex items-center w-full text-left space-x-3 px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-300 group"
-//               >
-//                 <span className="text-lg group-hover:scale-110 transition-transform duration-300">{item.icon}</span>
-//                 <span className="font-medium">{item.name}</span>
-//                 <span className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">→</span>
-//               </button>
-//             ))}
-//             <div className="pt-4 mt-4 border-t border-gray-200">
-//               <button 
-//                 onClick={() => scrollToSection('contact')}
-//                 className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
-//               >
-//                 Get Started
-//               </button>
-//             </div>
-//           </nav>
-//         </div>
-//       </div>
-//     </header>
-//   )
-// }
-
 'use client'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, Users, Briefcase, Megaphone, Phone } from 'lucide-react'
+import LoginAuthModal from './LoginAuthModal'
+import RegisterAuthModal from './RegisterAuthModal'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [openDropdown, setOpenDropdown] = useState(null)
+  const [showLoginModal, setShowLoginModal] = useState(false)
+  const [showRegisterModal, setShowRegisterModal] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -172,13 +37,13 @@ export default function Header() {
 
   const menuItems = [
     { name: 'Home', id: 'home' },
-    { 
-      name: 'About Us', 
+    {
+      name: 'About Us',
       id: 'about',
       icon: <Users className="w-4 h-4" />
     },
-    { 
-      name: 'Recruitment', 
+    {
+      name: 'Recruitment',
       id: 'recruitment',
       icon: <Briefcase className="w-4 h-4" />,
       dropdown: [
@@ -189,8 +54,8 @@ export default function Header() {
         { name: 'Candidate Success', id: 'success', icon: '🏆' }
       ]
     },
-    { 
-      name: 'Digital Marketing', 
+    {
+      name: 'Digital Marketing',
       id: 'marketing',
       icon: <Megaphone className="w-4 h-4" />,
       dropdown: [
@@ -202,234 +67,257 @@ export default function Header() {
         { name: 'Email Marketing', id: 'email', icon: '✉️' }
       ]
     },
-    // { 
-    //   name: 'Our Services', 
-    //   id: 'services',
-    //   icon: <Wrench className="w-4 h-4" />,
-    //   dropdown: [
-    //     { name: 'Web Development', id: 'webdev', icon: '🌐' },
-    //     { name: 'UI/UX Design', id: 'design', icon: '🎨' },
-    //     { name: 'Branding', id: 'branding', icon: '🏷️' },
-    //     { name: 'Consulting', id: 'consulting', icon: '💡' }
-    //   ]
-    // },
     { name: 'Contact Us', id: 'contact', icon: <Phone className="w-4 h-4" /> }
   ]
 
   return (
-    <header className={`fixed top-0 px-10 w-full z-50 transition-all duration-300 ${
-      scrolled 
-        ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-100' 
+    <>
+      <header className={`fixed top-0 px-10 w-full z-50 transition-all duration-300 ${scrolled
+        ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-100'
         : 'bg-white/80 backdrop-blur-md shadow-sm'
-    }`}>
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <motion.div 
-            className="flex items-center group"
-            whileHover={{ scale: 1.02 }}
-          >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
-              <div className="relative rounded-lg">
-                <img src="/Synture_Without_Tagline.png" alt="" className='h-12 rounded-xl'/>
+        }`}>
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <motion.div
+              className="flex items-center group"
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                <div className="relative rounded-lg">
+                  <img src="/Synture_Without_Tagline.png" alt="" className='h-12 rounded-xl' />
+                </div>
               </div>
-            </div>
-            <div className="ml-3">
-              <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
-                Synture
+              <div className="ml-3">
+                <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
+                  Synture
+                </div>
+                <div className="text-xs text-gray-500 -mt-1">Digital Excellence</div>
               </div>
-              <div className="text-xs text-gray-500 -mt-1">Digital Excellence</div>
-            </div>
-          </motion.div>
-          
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1">
-            {menuItems.map((item) => (
-              <div key={item.id} className="relative">
-                {item.dropdown ? (
-                  <>
+            </motion.div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center space-x-1">
+              {menuItems.map((item) => (
+                <div key={item.id} className="relative">
+                  {item.dropdown ? (
+                    <>
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        onClick={() => toggleDropdown(item.id)}
+                        className="relative px-4 py-2 text-gray-700 font-medium flex items-center space-x-2 transition-all duration-300 hover:text-blue-600 group"
+                      >
+                        {item.icon}
+                        <span>{item.name}</span>
+                        <motion.div
+                          animate={{ rotate: openDropdown === item.id ? 180 : 0 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <ChevronDown className="w-4 h-4" />
+                        </motion.div>
+                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
+                      </motion.button>
+
+                      <AnimatePresence>
+                        {openDropdown === item.id && (
+                          <motion.div
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.2 }}
+                            className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-2 z-50 border border-gray-100"
+                          >
+                            {item.dropdown.map((subItem) => (
+                              <motion.button
+                                key={subItem.id}
+                                whileHover={{ x: 5 }}
+                                onClick={() => scrollToSection(subItem.id)}
+                                className="w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 flex items-center space-x-2 transition-colors duration-200"
+                              >
+                                <span>{subItem.icon}</span>
+                                <span>{subItem.name}</span>
+                              </motion.button>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </>
+                  ) : (
                     <motion.button
                       whileHover={{ scale: 1.05 }}
-                      onClick={() => toggleDropdown(item.id)}
-                      className="relative px-4 py-2 text-gray-700 font-medium flex items-center space-x-2 transition-all duration-300 hover:text-blue-600 group"
+                      onClick={() => scrollToSection(item.id)}
+                      className="relative px-4 py-2 text-gray-700 font-medium transition-all duration-300 hover:text-blue-600 group flex items-center space-x-2"
                     >
                       {item.icon}
                       <span>{item.name}</span>
-                      <motion.div
-                        animate={{ rotate: openDropdown === item.id ? 180 : 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <ChevronDown className="w-4 h-4" />
-                      </motion.div>
                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
                     </motion.button>
+                  )}
+                </div>
+              ))}
+            </nav>
 
-                    <AnimatePresence>
-                      {openDropdown === item.id && (
+            {/* Auth Buttons & Mobile Menu */}
+            <div className="flex items-center space-x-4">
+              <div className="hidden lg:flex space-x-3">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowLoginModal(true)}
+                  className="px-5 py-2.5 text-gray-700 font-medium rounded-full border border-gray-300 hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
+                >
+                  Login
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setShowRegisterModal(true)}
+                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+                >
+                  Register
+                </motion.button>
+              </div>
+
+              {/* Mobile Menu Button */}
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="lg:hidden relative w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white flex items-center justify-center hover:shadow-lg transition-all duration-300"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                <motion.div
+                  animate={isMenuOpen ? "open" : "closed"}
+                  variants={{
+                    open: { rotate: 90 },
+                    closed: { rotate: 0 }
+                  }}
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    {isMenuOpen ? (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    ) : (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    )}
+                  </svg>
+                </motion.div>
+              </motion.button>
+            </div>
+          </div>
+
+          {/* Mobile Menu */}
+          <AnimatePresence>
+            {isMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="lg:hidden overflow-hidden"
+              >
+                <nav className="py-6 space-y-2">
+                  {menuItems.map((item) => (
+                    <div key={item.id}>
+                      <motion.button
+                        whileTap={{ scale: 0.98 }}
+                        onClick={() => item.dropdown ? toggleDropdown(item.id) : scrollToSection(item.id)}
+                        className="flex items-center w-full text-left space-x-3 px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-300"
+                      >
+                        <span className="text-lg">{item.icon}</span>
+                        <span className="font-medium">{item.name}</span>
+                        {item.dropdown && (
+                          <motion.div
+                            animate={{ rotate: openDropdown === item.id ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="ml-auto"
+                          >
+                            <ChevronDown className="w-4 h-4" />
+                          </motion.div>
+                        )}
+                      </motion.button>
+
+                      {item.dropdown && openDropdown === item.id && (
                         <motion.div
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -10 }}
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: 'auto' }}
+                          exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-2 z-50 border border-gray-100"
+                          className="ml-8 mt-1 space-y-1"
                         >
                           {item.dropdown.map((subItem) => (
                             <motion.button
                               key={subItem.id}
                               whileHover={{ x: 5 }}
                               onClick={() => scrollToSection(subItem.id)}
-                              className="w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 flex items-center space-x-2 transition-colors duration-200"
+                              className="flex items-center w-full text-left space-x-3 px-4 py-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors duration-300"
                             >
-                              <span>{subItem.icon}</span>
+                              <span className="text-sm">{subItem.icon}</span>
                               <span>{subItem.name}</span>
                             </motion.button>
                           ))}
                         </motion.div>
                       )}
-                    </AnimatePresence>
-                  </>
-                ) : (
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    onClick={() => scrollToSection(item.id)}
-                    className="relative px-4 py-2 text-gray-700 font-medium transition-all duration-300 hover:text-blue-600 group flex items-center space-x-2"
-                  >
-                    {item.icon}
-                    <span>{item.name}</span>
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:w-full"></span>
-                  </motion.button>
-                )}
-              </div>
-            ))}
-          </nav>
+                    </div>
+                  ))}
 
-          {/* Auth Buttons & Mobile Menu */}
-          <div className="flex items-center space-x-4">
-            <div className="hidden lg:flex space-x-3">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-5 py-2.5 text-gray-700 font-medium rounded-full border border-gray-300 hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
-              >
-                Login
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-              >
-                Register
-              </motion.button>
-            </div>
-            
-            {/* Mobile Menu Button */}
-            <motion.button 
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="lg:hidden relative w-10 h-10 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white flex items-center justify-center hover:shadow-lg transition-all duration-300"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              <motion.div
-                animate={isMenuOpen ? "open" : "closed"}
-                variants={{
-                  open: { rotate: 90 },
-                  closed: { rotate: 0 }
-                }}
-              >
-                <svg 
-                  className="w-5 h-5" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  {isMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </motion.div>
-            </motion.button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        <AnimatePresence>
-          {isMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden"
-            >
-              <nav className="py-6 space-y-2">
-                {menuItems.map((item) => (
-                  <div key={item.id}>
+                  <div className="pt-4 mt-4 border-t border-gray-200 space-y-3">
                     <motion.button
+                      whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      onClick={() => item.dropdown ? toggleDropdown(item.id) : scrollToSection(item.id)}
-                      className="flex items-center w-full text-left space-x-3 px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-300"
+                      onClick={() => {
+                        setIsMenuOpen(false)
+                        setShowLoginModal(true)
+                      }}
+                      className="w-full py-3 text-gray-700 font-medium rounded-lg border border-gray-300 hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
                     >
-                      <span className="text-lg">{item.icon}</span>
-                      <span className="font-medium">{item.name}</span>
-                      {item.dropdown && (
-                        <motion.div
-                          animate={{ rotate: openDropdown === item.id ? 180 : 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="ml-auto"
-                        >
-                          <ChevronDown className="w-4 h-4" />
-                        </motion.div>
-                      )}
+                      Login
                     </motion.button>
-                    
-                    {item.dropdown && openDropdown === item.id && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="ml-8 mt-1 space-y-1"
-                      >
-                        {item.dropdown.map((subItem) => (
-                          <motion.button
-                            key={subItem.id}
-                            whileHover={{ x: 5 }}
-                            onClick={() => scrollToSection(subItem.id)}
-                            className="flex items-center w-full text-left space-x-3 px-4 py-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors duration-300"
-                          >
-                            <span className="text-sm">{subItem.icon}</span>
-                            <span>{subItem.name}</span>
-                          </motion.button>
-                        ))}
-                      </motion.div>
-                    )}
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => {
+                        setIsMenuOpen(false)
+                        setShowRegisterModal(true)
+                      }}
+                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
+                    >
+                      Register
+                    </motion.button>
                   </div>
-                ))}
-                
-                <div className="pt-4 mt-4 border-t border-gray-200 space-y-3">
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full py-3 text-gray-700 font-medium rounded-lg border border-gray-300 hover:border-blue-600 hover:text-blue-600 transition-all duration-300"
-                  >
-                    Login
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300"
-                  >
-                    Register
-                  </motion.button>
-                </div>
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
-    </header>
+                </nav>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </header>
+
+      {/* Login Modal */}
+      {showLoginModal && (
+        <LoginAuthModal
+          isOpen={showLoginModal}
+          onClose={() => setShowLoginModal(false)}
+          onSwitchToRegister={() => {
+            setShowLoginModal(false);
+            setShowRegisterModal(true);
+          }}
+        />
+      )}
+
+      {showRegisterModal && (
+        <RegisterAuthModal
+          isOpen={showRegisterModal}
+          onClose={() => setShowRegisterModal(false)}
+          onSwitchToLogin={() => {
+            setShowRegisterModal(false);
+            setShowLoginModal(true);
+          }}
+        />
+      )}
+    </>
   )
 }
