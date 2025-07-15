@@ -77,7 +77,7 @@
 //         {/* Main Content (75% width) */}
 //         <div className="lg:w-3/4 flex flex-col justify-center">
 //           <div className="max-w-4xl mx-auto text-center lg:text-left">
-         
+
 
 //             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
 //               <span className="relative">
@@ -87,12 +87,12 @@
 //                 <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transform scale-x-0 animate-pulse"></div>
 //               </span>
 //             </h1>
-            
+
 //             <p className="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
 //               Search through thousands of job listings from top companies worldwide. 
 //               Find the perfect match for your skills and career aspirations.
 //             </p>
-            
+
 //             {/* Search Form */}
 //             <div className="bg-white rounded-xl shadow-xl p-4 sm:p-6 mb-10">
 //               <div className="flex flex-col sm:flex-row gap-4">
@@ -180,6 +180,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { Search, MapPin, Building, DollarSign, Clock } from 'lucide-react'
+import Image from 'next/image'
 
 export default function JobBoardHero() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -191,53 +192,110 @@ export default function JobBoardHero() {
 
   const texts = [
     "Find Your Dream Job Today",
-    "Discover Exciting Opportunities", 
+    "Discover Exciting Opportunities",
     "Connect With Top Employers",
     "Advance Your Career"
   ]
 
+  // const ads = [
+  //   {
+  //     id: 1,
+  //     title: "Search Engine Optimization",
+  //     description: "Reach 50,000+ qualified candidates",
+  //    cta: "Learn More",
+  //     bgColor: "from-blue-600 to-blue-800",
+  //     textColor: "text-white"
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Social Media Marketing",
+  //     description: "Get 3x more applications",
+  //    cta: "Learn More",
+  //     bgColor: "from-purple-600 to-purple-800",
+  //     textColor: "text-white"
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "Email Marketing",
+  //     description: "Stand out from competitors",
+  //     cta: "Learn More",
+  //     bgColor: "from-green-600 to-green-800",
+  //     textColor: "text-white"
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "Lead Generation",
+  //     description: "Create professional lead generation",
+  //    cta: "Learn More",
+  //     bgColor: "from-orange-600 to-red-800",
+  //     textColor: "text-white"
+  //   },
+  //   {
+  //     id: 5,
+  //     title: "Online Reputation Management",
+  //     description: "Get public fame guidance",
+  //    cta: "Learn More",
+  //     bgColor: "from-teal-600 to-cyan-800",
+  //     textColor: "text-white"
+  //   }
+  // ]
+
   const ads = [
     {
       id: 1,
-      title: "Search Engine Optimization",
-      description: "Reach 50,000+ qualified candidates",
-     cta: "Learn More",
-      bgColor: "from-blue-600 to-blue-800",
-      textColor: "text-white"
+      image: "/images/banner/SEO-1.png",
+      imageAlt: "SEO Services",
+      buttonLink: "/services/seo"
     },
     {
       id: 2,
-      title: "Social Media Marketing",
-      description: "Get 3x more applications",
-     cta: "Learn More",
-      bgColor: "from-purple-600 to-purple-800",
-      textColor: "text-white"
+      image: "/images/banner/social-media-marketing-1.png",
+      imageAlt: "Social Media Marketing",
+      buttonLink: "/services/social-media-marketing"
     },
     {
       id: 3,
-      title: "Email Marketing",
-      description: "Stand out from competitors",
-      cta: "Learn More",
-      bgColor: "from-green-600 to-green-800",
-      textColor: "text-white"
+      image: "/images/banner/content-marketing-1.png",
+      imageAlt: "Contetnt Marketing",
+      buttonLink: "/services/content-marketing"
     },
     {
       id: 4,
-      title: "Lead Generation",
-      description: "Create professional lead generation",
-     cta: "Learn More",
-      bgColor: "from-orange-600 to-red-800",
-      textColor: "text-white"
+      image: "/images/banner/email-marketing-1.png",
+      imageAlt: "Email Marketing",
+      buttonLink: "/services/email-marketing"
     },
     {
       id: 5,
-      title: "Online Reputation Management",
-      description: "Get public fame guidance",
-     cta: "Learn More",
-      bgColor: "from-teal-600 to-cyan-800",
-      textColor: "text-white"
-    }
-  ]
+      image: "/images/banner/lead-generation-1.png",
+      imageAlt: "Lead Generation",
+      buttonLink: "/services/lead-generation"
+    },
+    {
+      id: 6,
+      image: "/images/banner/online-reputation-management-1.png",
+      imageAlt: "Online Reputation Management",
+      buttonLink: "/services/online-reputation-management"
+    },
+    {
+      id: 7,
+      image: "/images/banner/website-design-and-development-1.png",
+      imageAlt: "Website Design and Development",
+      buttonLink: "/services/website-design-and-development"
+    },
+    {
+      id: 8,
+      image: "/images/banner/digital-branding-1.png",
+      imageAlt: "Digital Branding",
+      buttonLink: "/services/design-branding"
+    },
+    // {
+    //   id: 9,
+    //   image: "/images/banner/lead-generation-1.png",
+    //   imageAlt: "Lead Generation",
+    //   buttonLink: "/services/lead-generation"
+    // },
+  ];
 
   const sampleJobs = [
     {
@@ -330,14 +388,14 @@ export default function JobBoardHero() {
     }
 
     const filtered = sampleJobs.filter(job => {
-      const matchesSearch = searchTerm === '' || 
+      const matchesSearch = searchTerm === '' ||
         job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         job.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
         job.description.toLowerCase().includes(searchTerm.toLowerCase())
-      
-      const matchesLocation = location === '' || 
+
+      const matchesLocation = location === '' ||
         job.location.toLowerCase().includes(location.toLowerCase())
-      
+
       return matchesSearch && matchesLocation
     })
 
@@ -375,13 +433,13 @@ export default function JobBoardHero() {
                   <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full transform scale-x-0 animate-pulse"></div>
                 </span>
               </h1>
-              
+
               <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Search through thousands of job listings from top companies worldwide. 
+                Search through thousands of job listings from top companies worldwide.
                 Find the perfect match for your skills and career aspirations.
               </p>
             </div>
-            
+
             {/* Search Form - Fixed Position */}
             <div className="bg-white rounded-xl shadow-xl p-4 sm:p-6 mb-8">
               <div className="flex flex-col sm:flex-row gap-4">
@@ -431,7 +489,7 @@ export default function JobBoardHero() {
                     <h2 className="text-2xl font-bold text-gray-900">Search Results</h2>
                     <span className="text-gray-600">{filteredJobs.length} jobs found</span>
                   </div>
-                  
+
                   {filteredJobs.length > 0 ? (
                     <div className="space-y-4">
                       {filteredJobs.map((job) => (
@@ -502,42 +560,53 @@ export default function JobBoardHero() {
           </div>
         </div>
 
+
         {/* Advertisement Banner - Fixed Width */}
-        <div className="lg:w-1/4 lg:block hidden h-[550px]">
-          <div className="h-full rounded-xl shadow-lg overflow-hidden relative">
+        <div className="lg:w-1/4 lg:block hidden h-[650px] w-[360px] sticky top-8">
+          <div className="h-full rounded-xl shadow-lg overflow-hidden relative bg-gray-100">
             {ads.map((ad, index) => (
-              <div 
+              <div
                 key={ad.id}
-                className={`absolute inset-0 transition-all duration-1000 ${index === currentAd ? 'opacity-100 transform translate-x-0' : 'opacity-0 transform translate-x-full'}`}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentAd ? 'opacity-100 z-10' : 'opacity-0 pointer-events-none'}`}
               >
-                <div className={`h-full w-full bg-gradient-to-br ${ad.bgColor} flex flex-col justify-center items-center p-6 text-center relative overflow-hidden`}>
-                  {/* Decorative elements */}
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
-                  <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
-                  
-                  <div className="relative z-10">
-                    <h3 className={`text-2xl font-bold mb-4 ${ad.textColor}`}>{ad.title}</h3>
-                    <p className={`mb-6 ${ad.textColor} opacity-90`}>{ad.description}</p>
-                    <button className="bg-white text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors transform hover:scale-105 duration-200">
-                      {ad.cta}
-                    </button>
-                  </div>
-                  
+                {/* Image Container - full height */}
+                <div className="relative h-full w-full">
+                  <Image
+                    src={ad.image}
+                    alt={ad.imageAlt}
+                    fill
+                    className="object-cover rounded-xl"
+                    priority={index < 3}
+                    onError={(e) => {
+                      console.error(`Failed to load image: ${ad.image}`);
+                      e.currentTarget.src = '/images/fallback-ad.png';
+                    }}
+                  />
+                  <a
+                    href={ad.buttonLink}
+                    className="absolute inset-0 z-20"
+                    aria-label={ad.imageAlt}
+                  />
+
                   <div className="absolute top-4 right-4 bg-black/70 text-white text-xs px-2 py-1 rounded">
                     Advertisement
                   </div>
                 </div>
+
               </div>
             ))}
-            
-            {/* Ad indicators */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+
+            {/* Navigation Dots - positioned at the very bottom */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-30">
               {ads.map((_, index) => (
-                <div
+                <button
                   key={index}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentAd ? 'bg-white' : 'bg-white/50'
-                  }`}
+                  onClick={() => {
+                    console.log(`Clicked ad ${index + 1}`);
+                    setCurrentAd(index);
+                  }}
+                  className={`w-3 h-3 rounded-full transition-all ${index === currentAd ? 'bg-white shadow-md' : 'bg-white/50'}`}
+                  aria-label={`View ad ${index + 1}`}
                 />
               ))}
             </div>

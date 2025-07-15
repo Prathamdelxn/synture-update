@@ -467,7 +467,7 @@ export default function RegisterForm({ isOpen = true, onClose = () => { } }) {
 
     return (
         <div
-            className="fixed inset-0 backdrop-blur-lg bg-white/10 flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 backdrop-blur-xs bg-white/30 flex items-center justify-center z-50 p-4"
             onClick={handleModalClick}
         >
             <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-3xl shadow-2xl w-full max-w-6xl h-[90vh] overflow-hidden flex border border-white/20">

@@ -96,15 +96,15 @@ export default function LoginAuthModal({ isOpen, onClose, onSwitchToRegister }) 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     try {
       setIsLoading(true);
-      const res = await axios.post('/api/user/login', { 
+      const res = await axios.post('/api/user/login', {
         email: formData.email,
         password: formData.password
-      }, { 
+      }, {
         validateStatus: () => true,
         headers: {
           'Content-Type': 'application/json',
@@ -114,9 +114,9 @@ export default function LoginAuthModal({ isOpen, onClose, onSwitchToRegister }) 
       switch (res.status) {
         case 200:
           toast.success('Login successful');
-        //   setTimeout(() => {
-        //     router.push("/")
-        //   },)
+          setTimeout(() => {
+            window.location.href = "/";
+          } , 2000)
           break;
         case 400:
           toast.error('Enter Email and Password');
@@ -170,11 +170,11 @@ export default function LoginAuthModal({ isOpen, onClose, onSwitchToRegister }) 
   if (!isOpen) return null;
 
   return (
-    <div 
+    <div
       className="fixed inset-0 backdrop-blur-xs bg-white/30 flex items-center justify-center p-4 z-50"
       onClick={handleBackdropClick}
     >
-      <div 
+      <div
         className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-3xl shadow-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden flex"
         onClick={(e) => e.stopPropagation()}
       >
