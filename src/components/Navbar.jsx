@@ -92,7 +92,7 @@ export default function Header() {
                 <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent">
                   Synture
                 </div>
-                <div className="text-xs text-gray-500 -mt-1">Digital Excellence</div>
+                <div className="text-xs text-gray-500 -mt-1">Solutions Private Limited</div>
               </div>
             </motion.div>
 
