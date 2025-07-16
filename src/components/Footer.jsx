@@ -14,8 +14,8 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Services</h3>
             <ul className="space-y-2 text-gray-400">
               <li><a href="#" className="hover:text-white">Digital Marketing</a></li>
-              <li><a href="#" className="hover:text-white">SEO Optimization</a></li>
-              <li><a href="#" className="hover:text-white">Web Development</a></li>
+              <li><a href="/services/seo" className="hover:text-white">SEO Optimization</a></li>
+              <li><a href="/services/website-design-and-development" className="hover:text-white">Web Development</a></li>
               <li><a href="#" className="hover:text-white">Brand Design</a></li>
             </ul>
           </div>
