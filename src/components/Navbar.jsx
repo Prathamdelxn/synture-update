@@ -59,11 +59,12 @@ export default function Header() {
       id: 'marketing',
       icon: <Megaphone className="w-4 h-4" />,
       dropdown: [
-        { name: 'SEO Services', id: 'seo', icon: '🔎' },
         { name: 'Social Media', id: 'social', icon: '📱' },
+        { name: 'Lead Generation', id: 'leadgen', icon: '🎯' },
+        { name: 'Email Marketing', id: 'email', icon: '✉️' },
+        { name: 'SEO Services', id: 'seo', icon: '🔎' },
         { name: 'Content Strategy', id: 'content', icon: '✍️' },
-        { name: 'PPC Advertising', id: 'ppc', icon: '💰' },
-        { name: 'Email Marketing', id: 'email', icon: '✉️' }
+        { name: 'PPC Advertising', id: 'ppc', icon: '💰' },   
       ]
     },
     { name: 'Contact Us', id: 'contact', icon: <Phone className="w-4 h-4" /> }
@@ -85,7 +86,7 @@ export default function Header() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition-opacity"></div>
                 <div className="relative rounded-lg">
-                  <img src="/Synture_Without_Tagline.png" alt="" className='h-12 rounded-xl' />
+                  <img src="/images/synture-without-tagline.png" alt="" className='h-12 rounded-xl' />
                 </div>
               </div>
               <div className="ml-3">
