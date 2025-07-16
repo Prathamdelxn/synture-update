@@ -562,7 +562,7 @@ export default function JobBoardHero() {
 
 
         {/* Advertisement Banner - Fixed Width */}
-        <div className="lg:w-1/4 lg:block hidden h-[650px] w-[360px] sticky top-8">
+        <div className="lg:w-1/3 lg:block hidden h-[650px] w-[550px] sticky top-1">
           <div className="h-full rounded-xl shadow-lg overflow-hidden relative bg-gray-100">
             {ads.map((ad, index) => (
               <div
