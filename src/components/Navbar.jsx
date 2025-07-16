@@ -63,7 +63,6 @@ export default function Header() {
         { name: 'Social Media', id: 'social', icon: '📱' },
         { name: 'Content Strategy', id: 'content', icon: '✍️' },
         { name: 'PPC Advertising', id: 'ppc', icon: '💰' },
-        { name: 'Analytics', id: 'analytics', icon: '📊' },
         { name: 'Email Marketing', id: 'email', icon: '✉️' }
       ]
     },

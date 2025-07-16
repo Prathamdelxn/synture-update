@@ -1,4 +1,5 @@
 "use client"
+
 import { useState, useEffect } from "react"
 
 export default function SocialMediaMarketing() {
@@ -143,10 +144,7 @@ export default function SocialMediaMarketing() {
   )
 
   return (
-    <div
-      id="social-media-page"
-      className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden"
-    >
+    <div id="social-media-page" className="min-h-screen bg-white relative overflow-hidden">
       {/* Custom CSS for animations */}
       <style jsx>{`
         @keyframes bounce {
@@ -154,8 +152,8 @@ export default function SocialMediaMarketing() {
           100% { transform: translateY(-30px) rotate(10deg); }
         }
         @keyframes pulse-rainbow {
-          0%, 100% { opacity: 0.6; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.2); }
+          0%, 100% { opacity: 0.4; transform: scale(1); }
+          50% { opacity: 0.8; transform: scale(1.2); }
         }
         @keyframes rainbow-shift {
           0% { background-position: 0% 50%; }
@@ -186,27 +184,27 @@ export default function SocialMediaMarketing() {
       `}</style>
 
       {/* Enhanced Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-pink-900"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50"></div>
 
       {/* Animated Background Orbs */}
       <FloatingElement
         delay="0"
         duration="8"
-        className="top-20 right-20 w-96 h-96 bg-gradient-to-r from-pink-400/30 to-purple-400/30 rounded-full mix-blend-screen filter blur-3xl animate-pulse-rainbow"
+        className="top-20 right-20 w-96 h-96 bg-gradient-to-r from-pink-400/20 to-purple-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-rainbow"
       >
         <div></div>
       </FloatingElement>
       <FloatingElement
         delay="3"
         duration="10"
-        className="bottom-20 left-20 w-80 h-80 bg-gradient-to-r from-orange-400/30 to-yellow-400/30 rounded-full mix-blend-screen filter blur-3xl animate-pulse-rainbow"
+        className="bottom-20 left-20 w-80 h-80 bg-gradient-to-r from-orange-400/20 to-yellow-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-rainbow"
       >
         <div></div>
       </FloatingElement>
       <FloatingElement
         delay="6"
         duration="9"
-        className="top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-emerald-400/30 to-cyan-400/30 rounded-full mix-blend-screen filter blur-3xl animate-pulse-rainbow"
+        className="top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-emerald-400/20 to-cyan-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-rainbow"
       >
         <div></div>
       </FloatingElement>
@@ -219,28 +217,28 @@ export default function SocialMediaMarketing() {
               isVisible ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"
             }`}
           >
-            <div className="inline-flex items-center bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-orange-500/20 border border-pink-500/30 rounded-full px-6 py-3 mb-8 backdrop-blur-sm hover:scale-105 transition-transform duration-300 animate-wiggle">
-              <span className="text-sm font-semibold bg-gradient-to-r from-pink-400 to-orange-400 bg-clip-text text-transparent">
+            <div className="inline-flex items-center bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-orange-500/10 border border-pink-500/20 rounded-full px-6 py-3 mb-8 backdrop-blur-sm hover:scale-105 transition-transform duration-300 animate-wiggle">
+              <span className="text-sm font-semibold bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent">
                 📱 Social Media Marketing Excellence
               </span>
             </div>
-            <h1 className="text-6xl lg:text-8xl font-black text-white mb-8 leading-tight">
+            <h1 className="text-6xl lg:text-8xl font-black text-gray-900 mb-8 leading-tight">
               Amplify Your{" "}
               <span className="relative">
-                <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-orange-400 bg-clip-text text-transparent animate-rainbow">
+                <span className="bg-gradient-to-r from-pink-600 via-purple-600 to-orange-600 bg-clip-text text-transparent animate-rainbow">
                   Social Presence
                 </span>
-                <div className="absolute -inset-1 bg-gradient-to-r from-pink-400 via-purple-400 to-orange-400 rounded-lg blur opacity-30 animate-pulse"></div>
+                <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 via-purple-600 to-orange-600 rounded-lg blur opacity-20 animate-pulse"></div>
               </span>
             </h1>
             <div className="max-w-6xl mx-auto mb-8">
-              <p className="text-xl text-gray-300 mb-6 leading-relaxed font-light">
-                <strong className="text-white">Social Media Marketing</strong> is the strategic use of social platforms
-                to connect with your audience, build brand awareness, and drive business growth. It involves creating
-                and sharing engaging content, running targeted advertisements, and fostering meaningful relationships
-                with customers across platforms like Facebook, Instagram, Twitter, LinkedIn, and TikTok.
+              <p className="text-xl text-gray-600 mb-6 leading-relaxed font-light">
+                <strong className="text-gray-900">Social Media Marketing</strong> is the strategic use of social
+                platforms to connect with your audience, build brand awareness, and drive business growth. It involves
+                creating and sharing engaging content, running targeted advertisements, and fostering meaningful
+                relationships with customers across platforms like Facebook, Instagram, Twitter, LinkedIn, and TikTok.
               </p>
-              <p className="text-2xl text-gray-200 leading-relaxed font-light">
+              <p className="text-2xl text-gray-700 leading-relaxed font-light">
                 Transform your social media presence into a powerful marketing engine that drives engagement, builds
                 communities, and converts followers into loyal customers.
               </p>
@@ -250,7 +248,7 @@ export default function SocialMediaMarketing() {
                 <span className="relative z-10">Get Free Social Audit</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
               </button>
-              <button className="group border-2 border-purple-400 text-purple-300 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-purple-500 hover:text-white hover:border-purple-500 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+              <button className="group border-2 border-gray-300 text-gray-700 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-gray-900 hover:text-white hover:border-gray-900 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
                 <span className="group-hover:scale-110 transition-transform duration-300 inline-block">
                   View Success Stories
                 </span>
@@ -264,13 +262,13 @@ export default function SocialMediaMarketing() {
       <section className="py-24 px-10 relative z-10">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="text-5xl lg:text-6xl font-black text-white mb-8">
+            <h2 className="text-5xl lg:text-6xl font-black text-gray-900 mb-8">
               Our{" "}
-              <span className="bg-gradient-to-r from-pink-400 to-orange-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent">
                 Social Media Services
               </span>
             </h2>
-            <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light">
+            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
               Comprehensive social media solutions designed to build your brand and drive engagement
             </p>
           </div>
@@ -278,15 +276,14 @@ export default function SocialMediaMarketing() {
             {socialMediaServices.map((service, index) => (
               <div
                 key={index}
-                className={`group relative p-8 bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer border border-white/20 overflow-hidden ${service.shadowColor} hover:-translate-y-4 hover:scale-[1.05] hover:rotate-1`}
+                className={`group relative p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer border border-gray-100 overflow-hidden ${service.shadowColor} hover:-translate-y-4 hover:scale-[1.05] hover:rotate-1`}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
                 {/* Background Gradient - Enhanced */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-3xl`}
+                  className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}
                 ></div>
-
                 {/* Service Icon - Enhanced with wiggle */}
                 <div className="relative mb-6">
                   <div
@@ -295,32 +292,29 @@ export default function SocialMediaMarketing() {
                     {service.icon}
                   </div>
                 </div>
-
                 {/* Service Content */}
                 <div className="relative">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-pink-400 group-hover:to-orange-400 group-hover:bg-clip-text transition-all duration-300">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-pink-600 group-hover:to-orange-600 group-hover:bg-clip-text transition-all duration-300">
                     {service.title}
                   </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed mb-3 group-hover:translate-x-2 transition-transform duration-300">
+                  <p className="text-gray-600 text-sm leading-relaxed mb-3 group-hover:translate-x-2 transition-transform duration-300">
                     {service.description}
                   </p>
-                  <p className="text-xs text-gray-400 leading-relaxed mb-4 group-hover:translate-x-2 transition-transform duration-300 delay-75">
+                  <p className="text-xs text-gray-500 leading-relaxed mb-4 group-hover:translate-x-2 transition-transform duration-300 delay-75">
                     {service.details}
                   </p>
-
                   {/* Stats Badge - Enhanced */}
                   <div
                     className={`inline-flex items-center bg-gradient-to-r ${service.color} text-white px-3 py-1 rounded-full text-xs font-semibold mb-4 group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-300 `}
                   >
                     {service.stats}
                   </div>
-
                   {/* Features List - Enhanced */}
                   <div className="space-y-2">
                     {service.features.map((feature, featureIndex) => (
                       <div
                         key={featureIndex}
-                        className="flex items-center text-xs text-gray-300 group-hover:translate-x-2 transition-transform duration-300"
+                        className="flex items-center text-xs text-gray-600 group-hover:translate-x-2 transition-transform duration-300"
                         style={{ transitionDelay: `${100 + featureIndex * 50}ms` }}
                       >
                         <div
@@ -331,7 +325,6 @@ export default function SocialMediaMarketing() {
                     ))}
                   </div>
                 </div>
-
                 {/* Hover Arrow - Enhanced with wiggle effect */}
                 <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:animate-wiggle">
                   <div
@@ -342,10 +335,9 @@ export default function SocialMediaMarketing() {
                     </svg>
                   </div>
                 </div>
-
                 {/* Glowing border on hover */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-r ${service.color} rounded-3xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500 -z-10`}
+                  className={`absolute inset-0 bg-gradient-to-r ${service.color} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`}
                 ></div>
               </div>
             ))}
@@ -354,16 +346,16 @@ export default function SocialMediaMarketing() {
       </section>
 
       {/* Enhanced Benefits Section */}
-      <section className="py-24 px-10 bg-gradient-to-br from-purple-900/50 via-pink-900/50 to-orange-900/50 relative z-10 backdrop-blur-sm">
+      <section className="py-24 px-10 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 relative z-10">
         <div className="container mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="text-5xl lg:text-6xl font-black text-white mb-8">
+            <h2 className="text-5xl lg:text-6xl font-black text-gray-900 mb-8">
               Why Choose Our{" "}
-              <span className="bg-gradient-to-r from-pink-400 to-orange-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-pink-600 to-orange-600 bg-clip-text text-transparent">
                 Social Media Marketing?
               </span>
             </h2>
-            <p className="text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed font-light">
+            <p className="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
               Experience the power of strategic social media marketing that drives real business growth
             </p>
           </div>
@@ -371,13 +363,12 @@ export default function SocialMediaMarketing() {
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="group relative text-center p-8 bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-8 hover:scale-110 cursor-pointer overflow-hidden border border-white/20"
+                className="group relative text-center p-8 bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-8 hover:scale-110 cursor-pointer overflow-hidden"
               >
                 {/* Background Gradient */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-0 group-hover:opacity-20 transition-opacity duration-500 rounded-3xl`}
+                  className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`}
                 ></div>
-
                 {/* Icon with Animation */}
                 <div className="relative z-10 mb-6">
                   <div className="text-6xl mb-4 transform group-hover:scale-150 group-hover:animate-wiggle transition-all duration-500">
@@ -390,17 +381,16 @@ export default function SocialMediaMarketing() {
                   </div>
                 </div>
                 <div className="relative z-10">
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-pink-400 group-hover:to-orange-400 group-hover:bg-clip-text transition-all duration-300">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-pink-600 group-hover:to-orange-600 group-hover:bg-clip-text transition-all duration-300">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-300 group-hover:text-white transition-colors duration-300">
+                  <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                     {benefit.description}
                   </p>
                 </div>
-
                 {/* Glowing Border */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-r ${benefit.color} rounded-3xl opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-500 -z-10`}
+                  className={`absolute inset-0 bg-gradient-to-r ${benefit.color} rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`}
                 ></div>
               </div>
             ))}
@@ -422,7 +412,6 @@ export default function SocialMediaMarketing() {
                 }}
               ></div>
             </div>
-
             {/* Floating Elements */}
             <FloatingElement
               delay="0"
@@ -445,7 +434,6 @@ export default function SocialMediaMarketing() {
             >
               <div></div>
             </FloatingElement>
-
             <div className="relative z-10">
               <h2 className="text-5xl lg:text-6xl font-black mb-8 leading-tight">Ready to Go Viral?</h2>
               <p className="text-2xl mb-12 opacity-90 max-w-3xl mx-auto font-light leading-relaxed">
