@@ -4,9 +4,9 @@ import { useState, useEffect } from "react"
 export default function ContentMarketing() {
     const [isVisible, setIsVisible] = useState(false)
     const [hoveredIndex, setHoveredIndex] = useState(null)
-    const [typewriterText, setTypewriterText] = useState("")
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
     const [scrollY, setScrollY] = useState(0)
-
+    const [typewriterText, setTypewriterText] = useState("")
     const fullText = "Fuel your brand with powerful words"
 
     useEffect(() => {
@@ -154,11 +154,11 @@ export default function ContentMarketing() {
         },
     ]
 
-    const MorphingShape = ({ delay, children, className }) => (
+    const FloatingElement = ({ delay, duration, children, className }) => (
         <div
             className={`absolute ${className}`}
             style={{
-                animation: `morph 8s ease-in-out ${delay}s infinite`,
+                animation: `bounce ${duration}s ease-in-out ${delay}s infinite alternate`,
             }}
         >
             {children}
@@ -166,107 +166,74 @@ export default function ContentMarketing() {
     )
 
     return (
-        <div
-            id="content-marketing-page"
-            className="min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50 to-teal-50 relative overflow-hidden"
-        >
+        <div id="content-marketing-page" className="min-h-screen bg-white relative overflow-hidden">
             {/* Custom CSS for animations */}
             <style jsx>{`
-        @keyframes morph {
-          0%, 100% { 
-            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-            transform: translateY(0px) rotate(0deg) scale(1);
-          }
-          25% { 
-            border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-            transform: translateY(-20px) rotate(90deg) scale(1.1);
-          }
-          50% { 
-            border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
-            transform: translateY(-10px) rotate(180deg) scale(0.9);
-          }
-          75% { 
-            border-radius: 60% 40% 60% 40% / 70% 30% 60% 40%;
-            transform: translateY(-30px) rotate(270deg) scale(1.2);
-          }
-        }
-        @keyframes typewriter {
-          from { width: 0; }
-          to { width: 100%; }
-        }
-        @keyframes slide-up {
-          0% { transform: translateY(100px); opacity: 0; }
-          100% { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes slide-in-left {
-          0% { transform: translateX(-100px); opacity: 0; }
-          100% { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slide-in-right {
-          0% { transform: translateX(100px); opacity: 0; }
-          100% { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes text-glow {
-          0%, 100% { text-shadow: 0 0 5px rgba(16, 185, 129, 0.5); }
-          50% { text-shadow: 0 0 20px rgba(16, 185, 129, 0.8), 0 0 30px rgba(16, 185, 129, 0.6); }
-        }
-        .animate-slide-up {
-          animation: slide-up 0.8s ease-out forwards;
-        }
-        .animate-slide-in-left {
-          animation: slide-in-left 0.8s ease-out forwards;
-        }
-        .animate-slide-in-right {
-          animation: slide-in-right 0.8s ease-out forwards;
-        }
-        .animate-text-glow {
-          animation: text-glow 2s ease-in-out infinite;
-        }
-        @keyframes paper-fold {
-          0% { transform: rotateY(0deg) rotateX(0deg); }
-          25% { transform: rotateY(-15deg) rotateX(5deg); }
-          50% { transform: rotateY(0deg) rotateX(-5deg); }
-          75% { transform: rotateY(15deg) rotateX(5deg); }
-          100% { transform: rotateY(0deg) rotateX(0deg); }
-        }
-        .animate-paper-fold {
-          animation: paper-fold 3s ease-in-out infinite;
-        }
-      `}</style>
+                @keyframes bounce {
+                    0% { transform: translateY(0px) rotate(0deg); }
+                    100% { transform: translateY(-30px) rotate(10deg); }
+                }
+                @keyframes pulse-rainbow {
+                    0%, 100% { opacity: 0.4; transform: scale(1); }
+                    50% { opacity: 0.8; transform: scale(1.2); }
+                }
+                @keyframes rainbow-shift {
+                    0% { background-position: 0% 50%; }
+                    25% { background-position: 100% 50%; }
+                    50% { background-position: 100% 100%; }
+                    75% { background-position: 0% 100%; }
+                    100% { background-position: 0% 50%; }
+                }
+                .animate-rainbow {
+                    background-size: 400% 400%;
+                    animation: rainbow-shift 4s ease infinite;
+                }
+                .animate-pulse-rainbow {
+                    animation: pulse-rainbow 3s ease-in-out infinite;
+                }
+                @keyframes wiggle {
+                    0%, 7% { transform: rotateZ(0); }
+                    15% { transform: rotateZ(-15deg); }
+                    20% { transform: rotateZ(10deg); }
+                    25% { transform: rotateZ(-10deg); }
+                    30% { transform: rotateZ(6deg); }
+                    35% { transform: rotateZ(-4deg); }
+                    40%, 100% { transform: rotateZ(0); }
+                }
+                .animate-wiggle {
+                    animation: wiggle 2s ease-in-out infinite;
+                }
+                @keyframes typewriter {
+                    from { width: 0; }
+                    to { width: 100%; }
+                }
+            `}</style>
 
             {/* Enhanced Background Elements */}
             <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-emerald-50 to-teal-50"></div>
-
-            {/* Morphing Background Shapes */}
-            <MorphingShape
+            
+            {/* Animated Background Orbs */}
+            <FloatingElement
                 delay="0"
-                className="top-20 right-20 w-96 h-96 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 mix-blend-multiply filter blur-2xl"
+                duration="8"
+                className="top-20 right-20 w-96 h-96 bg-gradient-to-r from-emerald-400/20 to-teal-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-rainbow"
             >
                 <div></div>
-            </MorphingShape>
-            <MorphingShape
+            </FloatingElement>
+            <FloatingElement
                 delay="3"
-                className="bottom-20 left-20 w-80 h-80 bg-gradient-to-r from-blue-400/20 to-indigo-400/20 mix-blend-multiply filter blur-2xl"
+                duration="10"
+                className="bottom-20 left-20 w-80 h-80 bg-gradient-to-r from-blue-400/20 to-indigo-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-rainbow"
             >
                 <div></div>
-            </MorphingShape>
-            <MorphingShape
+            </FloatingElement>
+            <FloatingElement
                 delay="6"
-                className="top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-purple-400/20 to-pink-400/20 mix-blend-multiply filter blur-2xl"
+                duration="9"
+                className="top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse-rainbow"
             >
                 <div></div>
-            </MorphingShape>
-
-            {/* Floating Text Elements */}
-            <div className="absolute top-32 left-10 text-emerald-200/30 text-6xl font-bold transform -rotate-12 animate-pulse">
-                Content
-            </div>
-            <div className="absolute bottom-32 right-10 text-teal-200/30 text-4xl font-bold transform rotate-12 animate-pulse">
-                Strategy
-            </div>
-            <div className="absolute top-1/2 right-20 text-blue-200/30 text-5xl font-bold transform rotate-45 animate-pulse">
-                Stories
-            </div>
+            </FloatingElement>
 
             {/* Hero Section */}
             <section className="py-24 px-10 relative z-10">
@@ -275,7 +242,7 @@ export default function ContentMarketing() {
                         className={`text-center mb-20 transition-all duration-1000 ${isVisible ? "opacity-100 transform translate-y-0" : "opacity-0 transform translate-y-10"
                             }`}
                     >
-                        <div className="inline-flex items-center bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-blue-500/10 border border-emerald-500/20 rounded-full px-6 py-3 mb-8 backdrop-blur-sm hover:scale-105 transition-transform duration-300 animate-paper-fold">
+                        <div className="inline-flex items-center bg-gradient-to-r from-emerald-500/10 via-teal-500/10 to-blue-500/10 border border-emerald-500/20 rounded-full px-6 py-3 mb-8 backdrop-blur-sm hover:scale-105 transition-transform duration-300 animate-wiggle">
                             <span className="text-sm font-semibold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                                 📝 Content Marketing Mastery
                             </span>
@@ -284,16 +251,16 @@ export default function ContentMarketing() {
                         <h1 className="text-6xl lg:text-8xl font-black text-gray-900 mb-8 leading-tight">
                             ✨ Content That Drives {" "}
                             <span className="relative">
-                                <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 bg-clip-text text-transparent animate-text-glow">
+                                <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 bg-clip-text text-transparent animate-rainbow">
                                     Growth
                                 </span>
-                                <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 rounded-lg blur opacity-20 animate-pulse"></div>
+                                <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 rounded-lg blur opacity-20"></div>
                             </span>
                         </h1>
 
                         {/* Typewriter Effect */}
                         <div className="text-3xl text-emerald-700 mb-8 font-bold min-h-[3rem] flex items-center justify-center">
-                            <span className="border-r-2 border-emerald-600 pr-2 animate-pulse">{typewriterText}</span>
+                            <span className="border-r-2 border-emerald-600 pr-2">{typewriterText}</span>
                         </div>
 
                         <div className="max-w-6xl mx-auto mb-8">
@@ -342,78 +309,67 @@ export default function ContentMarketing() {
                         {contentServices.map((service, index) => (
                             <div
                                 key={index}
-                                className={`group relative p-8 bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-700 cursor-pointer border border-gray-100 overflow-hidden ${service.shadowColor} hover:-translate-y-6 hover:scale-[1.03]`}
+                                className={`group relative p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 cursor-pointer border border-gray-100 overflow-hidden ${service.shadowColor} hover:-translate-y-4 hover:scale-[1.05] hover:rotate-1`}
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(null)}
-                                style={{
-                                    animation: isVisible ? `slide-up 0.8s ease-out ${index * 0.1}s forwards` : "none",
-                                    opacity: isVisible ? 1 : 0,
-                                    transform: isVisible ? "translateY(0)" : "translateY(100px)",
-                                }}
                             >
-                                {/* Background Gradient with Paper Effect */}
+                                {/* Background Gradient - Enhanced */}
                                 <div
-                                    className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-15 transition-opacity duration-700 rounded-3xl`}
+                                    className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}
                                 ></div>
-
-                                {/* Service Icon with Paper Fold Animation */}
+                                {/* Service Icon - Enhanced with wiggle */}
                                 <div className="relative mb-6">
                                     <div
-                                        className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg transition-all duration-700 group-hover:animate-paper-fold group-hover:scale-125`}
+                                        className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg transition-all duration-500 group-hover:animate-wiggle group-hover:scale-125`}
                                     >
                                         {service.icon}
                                     </div>
                                 </div>
-
-                                {/* Service Content with Slide Animations */}
+                                {/* Service Content */}
                                 <div className="relative">
-                                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-600 group-hover:to-teal-600 group-hover:bg-clip-text transition-all duration-500">
+                                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-600 group-hover:to-teal-600 group-hover:bg-clip-text transition-all duration-300">
                                         {service.title}
                                     </h3>
-                                    <p className="text-gray-600 text-sm leading-relaxed mb-3 group-hover:translate-x-2 transition-transform duration-500">
+                                    <p className="text-gray-600 text-sm leading-relaxed mb-3 group-hover:translate-x-2 transition-transform duration-300">
                                         {service.description}
                                     </p>
-                                    <p className="text-xs text-gray-500 leading-relaxed mb-4 group-hover:translate-x-2 transition-transform duration-500 delay-100">
-                                        {service.details}
-                                    </p>
-
-                                    {/* Stats Badge with Glow Effect */}
+                                    <p className="text-xs text-gray-500 leading-relaxed mb-4 group-hover:translate-x-2 transition-transform duration-300 delay-75">{service.details}</p>
+                                    {/* Stats Badge - Enhanced */}
                                     <div
-                                        className={`inline-flex items-center bg-gradient-to-r ${service.color} text-white px-3 py-1 rounded-full text-xs font-semibold mb-4 group-hover:scale-110 group-hover:-translate-y-1 group-hover:shadow-lg transition-all duration-500`}
+                                        className={`inline-flex items-center bg-gradient-to-r ${service.color} text-white px-3 py-1 rounded-full text-xs font-semibold mb-4 group-hover:scale-110 group-hover:-translate-y-1 transition-all duration-300`}
                                     >
                                         {service.stats}
                                     </div>
-
-                                    {/* Features List with Staggered Animation */}
+                                    {/* Features List - Enhanced */}
                                     <div className="space-y-2">
                                         {service.features.map((feature, featureIndex) => (
                                             <div
                                                 key={featureIndex}
-                                                className="flex items-center text-xs text-gray-600 group-hover:translate-x-2 transition-transform duration-500"
-                                                style={{ transitionDelay: `${200 + featureIndex * 100}ms` }}
+                                                className="flex items-center text-xs text-gray-600 group-hover:translate-x-2 transition-transform duration-300"
+                                                style={{ transitionDelay: `${100 + (featureIndex * 50)}ms` }}
                                             >
                                                 <div
-                                                    className={`w-2 h-2 bg-gradient-to-r ${service.color} rounded-full mr-2 group-hover:scale-150 transition-transform duration-500`}
+                                                    className={`w-2 h-2 bg-gradient-to-r ${service.color} rounded-full mr-2 group-hover:scale-150 transition-transform duration-300`}
                                                 ></div>
                                                 <span>{feature}</span>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
-
-                                {/* Hover Arrow with Morphing Effect */}
-                                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-700">
+                                {/* Hover Arrow - Enhanced with wiggle effect */}
+                                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:animate-wiggle">
                                     <div
-                                        className={`w-6 h-6 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center transform group-hover:rotate-45 transition-transform duration-500`}
+                                        className={`w-6 h-6 bg-gradient-to-r ${service.color} rounded-full flex items-center justify-center`}
                                     >
                                         <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                         </svg>
                                     </div>
                                 </div>
-
-                                {/* Paper texture overlay */}
-                                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 rounded-3xl bg-gradient-to-br from-gray-100 to-gray-200 mix-blend-multiply"></div>
+                                {/* Glowing border on hover */}
+                                <div
+                                    className={`absolute inset-0 bg-gradient-to-r ${service.color} rounded-2xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`}
+                                ></div>
                             </div>
                         ))}
                     </div>
@@ -421,13 +377,7 @@ export default function ContentMarketing() {
             </section>
 
             {/* Enhanced Benefits Section */}
-            <section
-                className="py-24 px-10 relative z-10"
-                style={{
-                    background: `linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(20, 184, 166, 0.1) 50%, rgba(59, 130, 246, 0.1) 100%)`,
-                    transform: `translateY(${scrollY * 0.1}px)`,
-                }}
-            >
+            <section className="py-24 px-10 bg-gradient-to-br from-gray-50 via-emerald-50 to-teal-50 relative z-10">
                 <div className="container mx-auto px-6">
                     <div className="text-center mb-20">
                         <h2 className="text-5xl lg:text-6xl font-black text-gray-900 mb-8">
@@ -444,48 +394,34 @@ export default function ContentMarketing() {
                         {benefits.map((benefit, index) => (
                             <div
                                 key={index}
-                                className="group relative text-center p-8 bg-white/90 backdrop-blur-md rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-8 hover:scale-110 cursor-pointer overflow-hidden border border-white/50"
-                                style={{
-                                    animation: isVisible
-                                        ? `${index % 2 === 0 ? "slide-in-left" : "slide-in-right"} 0.8s ease-out ${index * 0.2}s forwards`
-                                        : "none",
-                                    opacity: isVisible ? 1 : 0,
-                                }}
+                                className="group relative text-center p-8 bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-8 hover:scale-110 cursor-pointer overflow-hidden"
                             >
-                                {/* Background Gradient with Morphing Effect */}
+                                {/* Background Gradient */}
                                 <div
-                                    className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-0 group-hover:opacity-15 transition-opacity duration-700 rounded-3xl`}
-                                    style={{
-                                        animation: "morph 6s ease-in-out infinite",
-                                    }}
+                                    className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-3xl`}
                                 ></div>
-
-                                {/* Icon with Enhanced Animation */}
+                                {/* Icon with Animation */}
                                 <div className="relative z-10 mb-6">
-                                    <div className="text-6xl mb-4 transform group-hover:scale-150 group-hover:rotate-12 transition-all duration-700 animate-paper-fold">
+                                    <div className="text-6xl mb-4 transform group-hover:scale-150 group-hover:animate-wiggle transition-all duration-500">
                                         {benefit.icon}
                                     </div>
                                     <div
-                                        className={`text-3xl font-black bg-gradient-to-r ${benefit.color} bg-clip-text text-transparent group-hover:scale-125 transition-transform duration-500 animate-text-glow`}
+                                        className={`text-3xl font-black bg-gradient-to-r ${benefit.color} bg-clip-text text-transparent group-hover:scale-125 transition-transform duration-300`}
                                     >
                                         {benefit.percentage}
                                     </div>
                                 </div>
                                 <div className="relative z-10">
-                                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-600 group-hover:to-teal-600 group-hover:bg-clip-text transition-all duration-500">
+                                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-emerald-600 group-hover:to-teal-600 group-hover:bg-clip-text transition-all duration-300">
                                         {benefit.title}
                                     </h3>
-                                    <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-500">
+                                    <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                                         {benefit.description}
                                     </p>
                                 </div>
-
-                                {/* Glowing Border with Morphing */}
+                                {/* Glowing Border */}
                                 <div
-                                    className={`absolute inset-0 bg-gradient-to-r ${benefit.color} rounded-3xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-700`}
-                                    style={{
-                                        animation: "morph 8s ease-in-out infinite reverse",
-                                    }}
+                                    className={`absolute inset-0 bg-gradient-to-r ${benefit.color} rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10`}
                                 ></div>
                             </div>
                         ))}
@@ -494,49 +430,56 @@ export default function ContentMarketing() {
             </section>
 
             {/* Enhanced CTA Section */}
-            {/* Enhanced CTA Section - Fixed Positioning */}
-            <section className="py-24 px-10 relative mt-60"> {/* Added mt-20 for top margin */}
+            <section className="py-24 px-10 relative z-10">
                 <div className="container mx-auto px-6">
-                    <div className="relative text-center bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 rounded-3xl p-20 text-white overflow-hidden z-20"> {/* Increased z-index */}
-                        {/* Animated Background Pattern */}
+                    <div className="relative text-center bg-gradient-to-r from-emerald-500 via-teal-600 to-blue-600 rounded-3xl p-20 text-white overflow-hidden animate-rainbow">
+                        {/* Background Pattern */}
                         <div className="absolute inset-0 opacity-20">
                             <div
-                                className="absolute inset-0 animate-paper-fold"
+                                className="absolute inset-0"
                                 style={{
-                                    backgroundImage: `linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%)`,
-                                    backgroundSize: "30px 30px",
+                                    backgroundImage: `radial-gradient(circle at 25% 25%, white 3px, transparent 3px)`,
+                                    backgroundSize: "60px 60px",
                                 }}
                             ></div>
                         </div>
-
-                        {/* Morphing Elements */}
-                        <MorphingShape delay="0" className="top-10 left-10 w-24 h-24 bg-white/20">
+                        {/* Floating Elements */}
+                        <FloatingElement
+                            delay="0"
+                            duration="5"
+                            className="top-10 left-10 w-24 h-24 bg-white/20 rounded-full animate-wiggle"
+                        >
                             <div></div>
-                        </MorphingShape>
-                        <MorphingShape delay="3" className="top-20 right-20 w-20 h-20 bg-white/20">
+                        </FloatingElement>
+                        <FloatingElement
+                            delay="2"
+                            duration="6"
+                            className="top-20 right-20 w-20 h-20 bg-white/20 rounded-full animate-wiggle"
+                        >
                             <div></div>
-                        </MorphingShape>
-                        <MorphingShape delay="6" className="bottom-10 left-20 w-16 h-16 bg-white/20">
+                        </FloatingElement>
+                        <FloatingElement
+                            delay="4"
+                            duration="7"
+                            className="bottom-10 left-20 w-16 h-16 bg-white/20 rounded-full animate-wiggle"
+                        >
                             <div></div>
-                        </MorphingShape>
-
-                        <div className="relative z-30"> {/* Increased z-index for content */}
-                            <h2 className="text-5xl lg:text-6xl font-black mb-8 leading-tight animate-text-glow">
-                                Ready to Tell Your Story?
-                            </h2>
+                        </FloatingElement>
+                        <div className="relative z-10">
+                            <h2 className="text-5xl lg:text-6xl font-black mb-8 leading-tight">Ready to Tell Your Story?</h2>
                             <p className="text-2xl mb-12 opacity-90 max-w-3xl mx-auto font-light leading-relaxed">
                                 Let's create compelling content that educates your audience, builds trust, and drives meaningful
                                 business results through strategic storytelling.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                                <button className="group relative bg-white text-gray-900 px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 overflow-hidden hover:scale-105 animate-paper-fold">
-                                    <span className="relative z-10 group-hover:text-white transition-colors duration-500">
+                                <button className="group relative bg-white text-gray-900 px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden hover:scale-105">
+                                    <span className="relative z-10 group-hover:text-white transition-colors duration-300">
                                         Get Content Strategy
                                     </span>
-                                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                                 </button>
-                                <button className="group border-2 border-white text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white hover:text-gray-900 transition-all duration-500 transform hover:-translate-y-1 hover:scale-105">
-                                    <span className="group-hover:scale-110 transition-transform duration-500 inline-block">
+                                <button className="group border-2 border-white text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300 transform hover:-translate-y-1 hover:scale-105">
+                                    <span className="group-hover:scale-110 transition-transform duration-300 inline-block">
                                         View Content Samples
                                     </span>
                                 </button>

@@ -197,49 +197,6 @@ export default function JobBoardHero() {
     "Advance Your Career"
   ]
 
-  // const ads = [
-  //   {
-  //     id: 1,
-  //     title: "Search Engine Optimization",
-  //     description: "Reach 50,000+ qualified candidates",
-  //    cta: "Learn More",
-  //     bgColor: "from-blue-600 to-blue-800",
-  //     textColor: "text-white"
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Social Media Marketing",
-  //     description: "Get 3x more applications",
-  //    cta: "Learn More",
-  //     bgColor: "from-purple-600 to-purple-800",
-  //     textColor: "text-white"
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Email Marketing",
-  //     description: "Stand out from competitors",
-  //     cta: "Learn More",
-  //     bgColor: "from-green-600 to-green-800",
-  //     textColor: "text-white"
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "Lead Generation",
-  //     description: "Create professional lead generation",
-  //    cta: "Learn More",
-  //     bgColor: "from-orange-600 to-red-800",
-  //     textColor: "text-white"
-  //   },
-  //   {
-  //     id: 5,
-  //     title: "Online Reputation Management",
-  //     description: "Get public fame guidance",
-  //    cta: "Learn More",
-  //     bgColor: "from-teal-600 to-cyan-800",
-  //     textColor: "text-white"
-  //   }
-  // ]
-
   const ads = [
     {
       id: 1,
@@ -255,10 +212,11 @@ export default function JobBoardHero() {
     },
     {
       id: 3,
-      image: "/images/banner/content-marketing-1.png",
-      imageAlt: "Contetnt Marketing",
-      buttonLink: "/services/content-marketing"
+      image: "/images/banner/lead-generation-1.png",
+      imageAlt: "Lead Generation",
+      buttonLink: "/services/lead-generation"
     },
+    
     {
       id: 4,
       image: "/images/banner/email-marketing-1.png",
@@ -267,9 +225,9 @@ export default function JobBoardHero() {
     },
     {
       id: 5,
-      image: "/images/banner/lead-generation-1.png",
-      imageAlt: "Lead Generation",
-      buttonLink: "/services/lead-generation"
+      image: "/images/banner/content-marketing-1.png",
+      imageAlt: "Contetnt Marketing",
+      buttonLink: "/services/content-marketing"
     },
     {
       id: 6,
@@ -288,13 +246,7 @@ export default function JobBoardHero() {
       image: "/images/banner/digital-branding-1.png",
       imageAlt: "Digital Branding",
       buttonLink: "/services/design-branding"
-    },
-    // {
-    //   id: 9,
-    //   image: "/images/banner/lead-generation-1.png",
-    //   imageAlt: "Lead Generation",
-    //   buttonLink: "/services/lead-generation"
-    // },
+    }
   ];
 
   const sampleJobs = [
