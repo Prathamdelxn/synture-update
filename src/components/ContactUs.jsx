@@ -1,4 +1,5 @@
 'use client'
+
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Send, CheckCircle, ArrowRight } from 'lucide-react'
 
@@ -14,17 +15,31 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Form submitted:', formData)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+
+      const result = await res.json()
+
+      if (result.success) {
+        setIsSubmitted(true)
+        setFormData({ name: '', email: '', message: '' })
+        setTimeout(() => setIsSubmitted(false), 3000)
+      } else {
+        alert('Failed to send message.')
+      }
+    } catch (error) {
+      console.error('Submit error:', error)
+      alert('Something went wrong.')
+    } finally {
       setIsSubmitting(false)
-      setIsSubmitted(true)
-      setFormData({ name: '', email: '', message: '' })
-      
-      // Reset success state after 3 seconds
-      setTimeout(() => setIsSubmitted(false), 3000)
-    }, 1500)
+    }
   }
 
   const handleChange = (e) => {
@@ -57,7 +72,6 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 overflow-hidden">
-      {/* Floating gradient elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-400/10 rounded-full filter blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-purple-400/10 rounded-full filter blur-3xl"></div>
@@ -77,7 +91,6 @@ export default function Contact() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Contact Information */}
           <div className="space-y-6">
             <h3 className="text-2xl font-bold text-gray-900 flex items-center gap-3">
               <span className="w-8 h-8 rounded-md bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center text-white">
@@ -85,10 +98,10 @@ export default function Contact() {
               </span>
               How to reach us
             </h3>
-            
+
             <div className="grid gap-6">
               {contactInfo.map((item, index) => (
-                <div 
+                <div
                   key={index}
                   className="group p-6 bg-white rounded-xl border border-gray-200 hover:border-transparent shadow-sm hover:shadow-lg transition-all duration-300"
                 >
@@ -112,11 +125,10 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Contact Form */}
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
             <div className="p-8 sm:p-10">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Send us a message</h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
@@ -128,7 +140,7 @@ export default function Contact() {
                       placeholder="Your name"
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder-gray-400"
+                      className="w-full px-4 py-3 bg-gray-50 text-black border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder-gray-400"
                       required
                     />
                   </div>
@@ -141,12 +153,12 @@ export default function Contact() {
                       placeholder="your@email.com"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder-gray-400"
+                      className="w-full px-4 py-3 bg-gray-50 text-black border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder-gray-400"
                       required
                     />
                   </div>
                 </div>
-                
+
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
                   <textarea
@@ -156,19 +168,19 @@ export default function Contact() {
                     value={formData.message}
                     onChange={handleChange}
                     rows="5"
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder-gray-400 resize-none"
+                    className="w-full px-4 py-3 bg-gray-50 text-black border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all placeholder-gray-400 resize-none"
                     required
                   ></textarea>
                 </div>
-                
+
                 <button
                   type="submit"
                   disabled={isSubmitting || isSubmitted}
                   className={`w-full py-4 px-6 rounded-lg font-semibold text-white transition-all duration-300 flex items-center justify-center gap-2 ${
-                    isSubmitted 
-                      ? 'bg-green-500 hover:bg-green-600' 
-                      : isSubmitting 
-                      ? 'bg-gray-500 cursor-not-allowed' 
+                    isSubmitted
+                      ? 'bg-green-500 hover:bg-green-600'
+                      : isSubmitting
+                      ? 'bg-gray-500 cursor-not-allowed'
                       : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-md hover:shadow-lg'
                   }`}
                 >
@@ -194,8 +206,7 @@ export default function Contact() {
                 </button>
               </form>
             </div>
-            
-            {/* Form footer */}
+
             <div className="bg-gray-50 px-8 py-6 border-t border-gray-100">
               <p className="text-sm text-gray-500 text-center">
                 We'll get back to you within 24 hours. Your information is secure with us.
