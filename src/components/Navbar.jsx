@@ -1,16 +1,33 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown, Users, Briefcase, Megaphone, Phone } from 'lucide-react'
+import { ChevronDown, Users, Briefcase, Megaphone, Phone, Book, School } from 'lucide-react'
 import LoginAuthModal from './LoginAuthModal'
 import RegisterAuthModal from './RegisterAuthModal'
+import { useRouter } from 'next/navigation'
 
 export default function Header() {
+  const router = useRouter()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [openDropdown, setOpenDropdown] = useState(null)
   const [showLoginModal, setShowLoginModal] = useState(false)
   const [showRegisterModal, setShowRegisterModal] = useState(false)
+  const dropdownRef = useRef(null)
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpenDropdown(null)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,6 +50,11 @@ export default function Header() {
 
   const toggleDropdown = (menu) => {
     setOpenDropdown(openDropdown === menu ? null : menu)
+  }
+
+  const handleCoursesClick = () => {
+    setIsMenuOpen(false)
+    router.push('/services/courses')
   }
 
   const menuItems = [
@@ -67,6 +89,12 @@ export default function Header() {
         { name: 'PPC Advertising', id: 'ppc', icon: '💰' },   
       ]
     },
+    {
+      name: 'Courses',
+      id: 'courses',
+      icon: <School className="w-4 h-4" />,
+      onClick: handleCoursesClick
+    },
     { name: 'Contact Us', id: 'contact', icon: <Phone className="w-4 h-4" /> }
   ]
 
@@ -98,7 +126,7 @@ export default function Header() {
             </motion.div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1">
+            <nav className="hidden lg:flex items-center space-x-1" ref={dropdownRef}>
               {menuItems.map((item) => (
                 <div key={item.id} className="relative">
                   {item.dropdown ? (
@@ -106,6 +134,7 @@ export default function Header() {
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         onClick={() => toggleDropdown(item.id)}
+                        onMouseEnter={() => setOpenDropdown(item.id)}
                         className="relative px-4 py-2 text-gray-700 font-medium flex items-center space-x-2 transition-all duration-300 hover:text-blue-600 group"
                       >
                         {item.icon}
@@ -127,6 +156,7 @@ export default function Header() {
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.2 }}
                             className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-xl py-2 z-50 border border-gray-100"
+                            onMouseLeave={() => setOpenDropdown(null)}
                           >
                             {item.dropdown.map((subItem) => (
                               <motion.button
@@ -146,7 +176,7 @@ export default function Header() {
                   ) : (
                     <motion.button
                       whileHover={{ scale: 1.05 }}
-                      onClick={() => scrollToSection(item.id)}
+                      onClick={item.onClick ? item.onClick : () => scrollToSection(item.id)}
                       className="relative px-4 py-2 text-gray-700 font-medium transition-all duration-300 hover:text-blue-600 group flex items-center space-x-2"
                     >
                       {item.icon}
@@ -225,7 +255,7 @@ export default function Header() {
                     <div key={item.id}>
                       <motion.button
                         whileTap={{ scale: 0.98 }}
-                        onClick={() => item.dropdown ? toggleDropdown(item.id) : scrollToSection(item.id)}
+                        onClick={() => item.dropdown ? toggleDropdown(item.id) : (item.onClick ? item.onClick() : scrollToSection(item.id))}
                         className="flex items-center w-full text-left space-x-3 px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-300"
                       >
                         <span className="text-lg">{item.icon}</span>

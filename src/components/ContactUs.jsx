@@ -65,7 +65,7 @@ export default function Contact() {
     {
       icon: MapPin,
       title: 'Address',
-      value: 'Sr. No 36/1/3, 2nd Floor Audumbar Nivya\nNear Canara Bank, Narhe gaon , Pune - 411041',
+      value: 'Sr. No 36/1/3, 3nd Floor Audumbar Nivya\nNear Canara Bank, Narhe gaon , Pune - 411041',
       color: 'bg-gradient-to-br from-emerald-500 to-teal-500'
     }
   ]
