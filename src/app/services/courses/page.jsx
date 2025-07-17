@@ -533,11 +533,11 @@ export default function CoursesPage() {
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-6">
               <div className="flex items-center gap-3 text-gray-600">
                 <Phone className="w-5 h-5 text-blue-500" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 8421539304</span>
               </div>
               <div className="flex items-center gap-3 text-gray-600">
                 <Mail className="w-5 h-5 text-blue-500" />
-                <span>admissions@techacademy.com</span>
+                <span>info@synturesolutions.com</span>
               </div>
             </div>
           </div>
