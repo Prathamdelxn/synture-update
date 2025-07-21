@@ -1,10 +1,10 @@
 "use client";
-
 import React, { useState, useEffect } from 'react';
 import { Mail, Lock, Eye, EyeOff, Sparkles, Shield, Users, CheckCircle, Target, Award, Briefcase } from 'lucide-react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -107,11 +107,10 @@ export default function LoginPage() {
           <div className="mb-8 relative animate-fade-in">
             {/* Synture Logo */}
             <div className="w-40 h-40 bg-white/10 rounded-full flex items-center justify-center mb-6 backdrop-blur-sm border border-white/20 hover:scale-105 transition-all duration-300">
-              <img
-                src="/Synture_Without_Tagline.png"
-                alt="Synture Logo"
+             <img src="/images/synture-without-tagline.png" alt=""
                 className="w-24 h-24 rounded-xl object-contain"
-              />
+                                 /> 
+
             </div>
             <div className="absolute -top-2 -right-2 w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full flex items-center justify-center animate-pulse">
               <Sparkles className="w-5 h-5 text-white" />
@@ -151,11 +150,14 @@ export default function LoginPage() {
           <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8 hover:shadow-3xl transition-shadow duration-300">
             <div className="text-center mb-8">
               <div className="w-24 h-24 mx-auto mb-4 animate-fade-in">
-                <img
+                {/* <img
                   src="/Synture_Without_Tagline.png"
                   alt="Synture Logo"
                   className="w-full h-full object-contain transform hover:scale-110 transition-transform duration-300"
-                />
+                /> */}
+                  <img src="/images/synture-without-tagline.png" alt=""
+                className="w-24 h-24 rounded-xl object-contain"
+                                 /> 
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-2 animate-fade-in">Sign In</h2>
               <p className="text-gray-600 animate-fade-in-delay">Enter your credentials to access your account</p>

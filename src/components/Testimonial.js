@@ -65,7 +65,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-20 px-10 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 relative overflow-hidden">
+    <section className="py-10 px-10 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-10 left-10 w-80 h-80 bg-gradient-to-br from-purple-200/20 to-pink-200/20 rounded-full blur-3xl animate-pulse"></div>
@@ -79,8 +79,8 @@ export default function Testimonials() {
           <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-4">
             What Our <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">Clients Say</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Don't just take our word for it - hear from our satisfied clients who've experienced real results
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Don't just take our word for it - hear from our satisfied clients who've experienced results
           </p>
         </div>
 

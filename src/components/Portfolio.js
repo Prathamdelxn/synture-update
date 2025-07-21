@@ -81,7 +81,7 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <section id="portfolio" className="py-20 px-10 bg-gradient-to-br from-gray-50 via-white to-purple-50 relative overflow-hidden">
+    <section id="portfolio" className="py-12 px-10 bg-gradient-to-br from-gray-50 via-white to-purple-50 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-purple-200/20 to-pink-200/20 rounded-full blur-3xl animate-pulse"></div>

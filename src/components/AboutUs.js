@@ -7,9 +7,9 @@ export default function About() {
   const [counters, setCounters] = useState([0, 0, 0, 0]);
   
   const stats = [
-    { number: 150, suffix: "+", label: "Projects Completed", color: "from-purple-500 to-pink-500" },
-    { number: 98, suffix: "%", label: "Client Satisfaction", color: "from-blue-500 to-cyan-500" },
-    { number: 5, suffix: "+", label: "Years Experience", color: "from-green-500 to-emerald-500" },
+    { number: 20, suffix: "+", label: "Projects Completed", color: "from-purple-500 to-pink-500" },
+    { number: 99, suffix: "%", label: "Client Satisfaction", color: "from-blue-500 to-cyan-500" },
+    { number: 1, suffix: "+", label: "Years Experience", color: "from-green-500 to-emerald-500" },
     { number: 24, suffix: "/7", label: "Support Available", color: "from-orange-500 to-red-500" }
   ];
 
@@ -52,7 +52,7 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="py-20 px-10 bg-gradient-to-br from-gray-50 via-purple-50 to-blue-50 relative overflow-hidden">
+    <section id="about" className="bg-gradient-to-br from-gray-50 py-10 px-20 via-purple-50 to-blue-50 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-purple-200/30 to-pink-200/30 rounded-full blur-3xl animate-pulse"></div>
@@ -73,7 +73,7 @@ export default function About() {
             </h2>
             
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              At Synture, we combine creativity with data-driven strategies to deliver exceptional results. 
+              At Synture, we combine creativity with data-driven strategies to deliver results. 
               Our team of digital marketing experts, SEO specialists, and web developers work together to 
               create solutions that not only look great but also drive real business growth.
             </p>
