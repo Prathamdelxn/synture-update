@@ -376,9 +376,9 @@ export default function JobBoardHero() {
                     className="absolute inset-0 z-20"
                     aria-label={ad.imageAlt}
                   />
-                  <div className="absolute top-4 right-4 bg-black/70 text-white text-xs px-2 py-1 rounded">
+                  {/* <div className="absolute top-4 right-4 bg-black/70 text-white text-xs px-2 py-1 rounded">
                     Advertisement
-                  </div>
+                  </div> */}
                 </div>
               </div>
             ))}
