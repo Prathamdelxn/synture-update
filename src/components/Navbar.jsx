@@ -407,7 +407,7 @@ export default function Header() {
 
   const handleTrainingsClick = () => {
     setIsMenuOpen(false)
-    router.push('/trainings')
+    router.push('/')
   }
 
   const menuItems = [
@@ -444,9 +444,10 @@ export default function Header() {
     },
     {
       name: 'Trainings',
-      id: 'trainings',
+      // id: 'trainings',
+      id: 'contact',
       icon: <School className="w-4 h-4" />,
-      onClick: handleTrainingsClick
+      // onClick: handleTrainingsClick
     },
     { name: 'Contact Us', id: 'contact', icon: <Phone className="w-4 h-4" /> }
   ]
