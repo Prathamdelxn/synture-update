@@ -1002,7 +1002,7 @@ export default function SyntureHero() {
               </span>
             </h1>
             
-            <p className="text-md sm:text-xl text-gray-600 leading-relaxed mb-6 max-w-3xl">
+            <p className="text-sm sm:text-xl text-gray-600 leading-relaxed mb-6 max-w-3xl">
               {perspective === 'business' 
                 ? "At Synture, we combine creativity with data-driven strategies to deliver results. Our team of digital marketing experts, SEO specialists, and web developers work together to create solutions that not only look great but also drive real business growth."
                 : "Learn from industry experts and master the skills that matter. Our comprehensive courses combine theoretical knowledge with practical projects to help you build a successful career in digital marketing."
@@ -1010,7 +1010,7 @@ export default function SyntureHero() {
             </p>
 
             {/* Dynamic Stats - FIXED VERSION */}
-            <div className="flex flex-wrap gap-6 mb-6">
+            {/* <div className="flex flex-wrap gap-6 mb-6">
               {(perspective === 'business' ? [
                 { icon: Target, number: '500+', label: 'Projects Delivered', color: 'text-blue-600' },
                 { icon: BarChart3, number: '250%', label: 'Avg ROI Increase', color: 'text-purple-600' },
@@ -1037,7 +1037,7 @@ export default function SyntureHero() {
                   </div>
                 );
               })}
-            </div>
+            </div> */}
 
             {/* Quick Search Terms */}
             <div className="mb-4">
