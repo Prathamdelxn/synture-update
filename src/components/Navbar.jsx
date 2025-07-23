@@ -229,14 +229,14 @@ export default function Header() {
                 >
                   Login
                 </motion.button>
-                <motion.button
+                {/* <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setShowRegisterModal(true)}
                   className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2.5 rounded-full font-semibold hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
                 >
                   Register
-                </motion.button>
+                </motion.button> */}
               </div>
 
               {/* Mobile Menu Button */}
