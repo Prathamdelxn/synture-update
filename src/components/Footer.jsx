@@ -20,15 +20,15 @@ export default function Footer() {
             <div className="space-y-3 text-sm text-gray-400">
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
-                <span>hello@synture.com</span>
+                <span>info@synturesolutions.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 8421539304</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="w-4 h-4" />
-                <span>New York, NY 10001</span>
+                <span>Sr. No 36/1/3, 3rd Floor Audumbar Nivya\nNear Canara Bank, Narhe gaon , Pune - 411041</span>
               </div>
             </div>
           </div>
