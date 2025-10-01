@@ -64,18 +64,18 @@ export default function Header() {
       id: 'about',
       icon: <Users className="w-4 h-4" />
     },
-    {
-      name: 'Recruitment',
-      id: 'recruitment',
-      icon: <Briefcase className="w-4 h-4" />,
-      dropdown: [
-        { name: 'Job Listings', id: 'jobs', icon: '🔍' },
-        { name: 'Career Growth', id: 'careers', icon: '📈' },
-        { name: 'Company Culture', id: 'culture', icon: '🏢' },
-        { name: 'Hiring Process', id: 'hiring', icon: '🔄' },
-        { name: 'Candidate Success', id: 'success', icon: '🏆' }
-      ]
-    },
+    // {
+    //   name: 'Recruitment',
+    //   id: 'recruitment',
+    //   icon: <Briefcase className="w-4 h-4" />,
+    //   dropdown: [
+    //     { name: 'Job Listings', id: 'jobs', icon: '🔍' },
+    //     { name: 'Career Growth', id: 'careers', icon: '📈' },
+    //     { name: 'Company Culture', id: 'culture', icon: '🏢' },
+    //     { name: 'Hiring Process', id: 'hiring', icon: '🔄' },
+    //     { name: 'Candidate Success', id: 'success', icon: '🏆' }
+    //   ]
+    // },
     {
       name: 'Digital Marketing',
       id: 'marketing',
