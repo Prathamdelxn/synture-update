@@ -126,7 +126,8 @@ export default function Header() {
         },
       ]
     },
-    { name: 'Contact Us', id: 'contact', icon: <Phone className="w-4 h-4" /> }
+  { name: 'Contact Us', id: 'contact', icon: <Phone className="w-4 h-4" /> },
+  { name: 'Get a Quote', id: 'get-a-quote', icon: <Phone className="w-4 h-4" />, onClick: () => router.push('/get-a-quote') }
   ]
 
   return (

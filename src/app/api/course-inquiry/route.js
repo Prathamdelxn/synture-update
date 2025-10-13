@@ -23,7 +23,7 @@ export async function POST(req) {
     // Send email to site owner
     await transporter.sendMail({
       from: process.env.EMAIL_USERNAME,
-      to: 'shreyassutar.delxn@gmail.com', // email id 
+      to: 'shreyassutar.info@synturesolutions.com', // email id 
       subject: `New Course Inquiry: ${courseInterest}`,
       html: `
         <h3>New Course Inquiry Received</h3>

@@ -15,7 +15,7 @@ export async function POST(req) {
     // Send email to site owner
     await transporter.sendMail({
       from: process.env.EMAIL_USERNAME,
-      to: 'shreyassutar.delxn@gmail.com', // your real email
+      to: 'shreyassutar.info@synturesolutions.com', // your real email
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <h3>New Message Received</h3>
